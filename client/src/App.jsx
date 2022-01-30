@@ -1,10 +1,13 @@
 import "./App.css";
 import Layout from "./components/Layout";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Layout />
+      <Switch>
+        <Layout />
+      </Switch>
     </div>
   );
 }
