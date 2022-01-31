@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Layout from "./components/Layout";
 import { Switch } from "react-router-dom";
 
-import "bootstrap";
 import { baseURL, config } from "./services";
 
 console.log(`$(process.env.REACT_APP_PORFOLIO_APP)`);
