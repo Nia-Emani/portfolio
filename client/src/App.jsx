@@ -70,9 +70,6 @@ const ProjectCard = ({ name, description, imageUrl, siteUrl }) => (
       <a class="btn btn-primary" href={siteUrl} role="button" target="_blank">
         Visit the {name} site!
       </a>
-      {/* <p className="card-url" key="project-url">
-        {siteUrl}
-      </p> */}
     </div>
   </div>
 );
