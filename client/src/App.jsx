@@ -1,67 +1,72 @@
 import "./App.css";
+import React, { Component } from "react";
 import Layout from "./components/Layout";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 // Import Bootstrap CSS and JS
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
+import { baseURL, config } from "./services";
 
-const projectData = [
-  {
-    project: "Pantry Meals",
-    description:
-      "Pantry meals is a search engine that allows users to discover unique meals, based on an ingredient they already have in their kitchen.",
-    imageURL: "https://via.placeholder.com/362x200",
-  },
-  {
-    project: "Confidant",
-    description:
-      "Confidant is a journaling app where users can jot down their thoughts on-the-go.",
-    imageURL: "https://via.placeholder.com/362x200",
-  },
-  {
-    project: "enCapsule",
-    description:
-      "EnCapsule is an app that allows users to organize and keep track of the items in their closet, directly from their mobile devices.",
-    imageURL: "https://via.placeholder.com/362x200",
-  },
-  {
-    project: "Bespoke Aromas",
-    description:
-      "Bespoke Aromas is an app that allows users to rate their favorite luxury fragrances.",
-    imageURL: "https://via.placeholder.com/362x200",
-  },
-];
+console.log(`$(process.env.REACT_APP_PORFOLIO_APP)`);
+console.log(`$(process.env.REACT_APP_PORFOLIO_KEY)`);
 
-function App() {
-  return (
-    <div className="App">
-      <Switch>
-        <Layout />
-      </Switch>
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col">
-            <div className="card-deck">
-              {projectData.map((project) => (
-                <ProjectCard {...project} />
-              ))}
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      project: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      "https://api.airtable.com/v0/app2ehx6WkmwUOTbG/projects?api_key=keyrLcb7cHnTAOxeJ"
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({ project: data.records });
+        console.log(data.records);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Switch>
+          <Layout />
+        </Switch>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col">
+              <div className="card-deck">
+                {this.state.project.map((project) => (
+                  <ProjectCard {...project.fields} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
 
-const ProjectCard = ({ project, description, imageURL }) => (
+const ProjectCard = ({ name, description, imageUrl }) => (
   <div className="card">
-    <img className="card-img-top" src={imageURL} alt="Project Logo" />
+    <img className="card-img-top" src={imageUrl[0].url} alt="Project Visual" />
     <div className="card-body">
-      <h5 className="card-title">{project}</h5>
-      <p className="card-text">{description}</p>
+      <h5 className="card-title" key="project-name">
+        {name}{" "}
+      </h5>
+      <p className="card-text" key="project-description">
+        {description}
+      </p>
     </div>
   </div>
 );
