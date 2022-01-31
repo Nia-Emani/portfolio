@@ -3,9 +3,7 @@ import React, { Component } from "react";
 import Layout from "./components/Layout";
 import { Switch } from "react-router-dom";
 
-// Import Bootstrap CSS and JS
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.js";
+import "bootstrap";
 import { baseURL, config } from "./services";
 
 console.log(`$(process.env.REACT_APP_PORFOLIO_APP)`);
