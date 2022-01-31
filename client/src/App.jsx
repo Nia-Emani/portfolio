@@ -57,7 +57,7 @@ class App extends Component {
 
 export default App;
 
-const ProjectCard = ({ name, description, imageUrl }) => (
+const ProjectCard = ({ name, description, imageUrl, siteUrl }) => (
   <div className="card">
     <img className="card-img-top" src={imageUrl[0].url} alt="Project Visual" />
     <div className="card-body">
@@ -67,6 +67,12 @@ const ProjectCard = ({ name, description, imageUrl }) => (
       <p className="card-text" key="project-description">
         {description}
       </p>
+      <a class="btn btn-primary" href={siteUrl} role="button" target="_blank">
+        Visit the {name} site!
+      </a>
+      {/* <p className="card-url" key="project-url">
+        {siteUrl}
+      </p> */}
     </div>
   </div>
 );

@@ -10,10 +10,31 @@ export default function Nav() {
           alt="Nia-Emani Portfolio Logo"
         />
       </Link>
-      <p>About</p>
-      <p>Projects</p>
-      <p>Resume</p>
-      <p>Contact</p>
+
+      <a
+        class="btn btn-primary"
+        href="https://github.com/Nia-Emani"
+        role="button"
+        target="_blank"
+      >
+        Github
+      </a>
+      <a
+        class="btn btn-primary"
+        href="https://drive.google.com/file/d/1L3C8mPWdbCw-mQoe-WBzQSfDa2mj4Hd8/view?usp=sharing"
+        role="button"
+        target="_blank"
+      >
+        Resume
+      </a>
+      <a
+        class="btn btn-primary"
+        href="https://www.linkedin.com/in/niaemanidickson/"
+        role="button"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
     </div>
   );
 }
